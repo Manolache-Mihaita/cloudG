@@ -129,8 +129,8 @@
         };
         xhr.open("POST", "/translations", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.send("initial_language=" + initial_language, "target_language=" + target_language,
-        "initial_text=" + initial_text);
+        xhr.send("initial_language=" + initial_language + "&target_language=" + target_language +
+        "&initial_text=" + initial_text);
     }
 
     $('select').select2({ width: '170px', placeholder: "Select an Option", allowClear: true });
