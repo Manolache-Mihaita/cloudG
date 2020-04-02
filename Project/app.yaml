@@ -15,3 +15,10 @@ resources:
   cpu: 1
   memory_gb: 0.5
   disk_size_gb: 10
+
+env_variables:
+  CLOUD_SQL_CONNECTION_NAME: "cloud-computing-tema-3:europe-west1:db-instance"
+  DB_USER: "root"
+  DB_PASS: "57js6E804y8Gb4im"
+  DB_NAME: "DbCloudComputing"
+  DB_PUBLIC_IP: "34.77.204.44"
