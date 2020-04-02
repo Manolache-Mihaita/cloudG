@@ -78,10 +78,20 @@
                        style="width:300px;height:150px;">
                 </div>
             </div>
-            <div>
-                <button id="translateBtn" class="btn green">Translate</button>
+            <div style="display: block;">
+                <div>
+                    <button id="translateBtn" class="btn green" style="width:150px;">Translate</button>
+                </div>
+                <div style="padding-top:10px;">
+                    <button onclick="playAudio()"  class="btn green" style="width:150px;">Play Audio</button>
+                </div>
+                <div style="padding-top:10px;">
+                    <button onclick="pauseAudio()" class="btn green" style="width:150px;">Pause Audio</button>
+                </div>
             </div>
-
+            <audio id="myAudio">
+                <source id="source_audio" src="../static/message_sound.mp3" type="audio/mpeg">
+            </audio>
     </div>
     <div>
         <table>
@@ -129,8 +139,11 @@
         };
         xhr.open("POST", "/translations", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.send("initial_language=" + initial_language + "&target_language=" + target_language +
+        var response = xhr.send("initial_language=" + initial_language + "&target_language=" + target_language +
         "&initial_text=" + initial_text);
+        
+        $('.translated-text').val(response.translation);
+        $("#source_audio").attr("src", response.file_name);
     }
 
     $('select').select2({ width: '170px', placeholder: "Select an Option", allowClear: true });
@@ -138,6 +151,16 @@
     document.getElementById("translateBtn").addEventListener("click", function () {
         translateText();
     });
+    
+    var x = document.getElementById("myAudio");
+
+    function playAudio() {
+        x.play();
+    }
+
+    function pauseAudio() {
+        x.pause();
+    }
 
 </script>
 </body>
