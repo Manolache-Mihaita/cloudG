@@ -78,6 +78,17 @@ def translate():
         "translations.html", translations=translations
     )
 
+@app.route("/translations", methods=["POST"])
+def translate_post():
+    team = request.form["initial_language"]
+    team = request.form["target_language"]
+    team = request.form["initial_text"]
+    return Response(
+        status=200,
+        response="OK",
+    )
+
+
 @app.route("/text-to-speech", methods=["GET"])
 def text_to_speech():
     translations = db.get_all_translations()
