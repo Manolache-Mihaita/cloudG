@@ -51,7 +51,7 @@ app.config['SECRET_KEY'] = "1310a7d075f989192b9bb7c69ab6b043"
 @app.before_first_request
 def create_table_translations():
     db.create_table_translations()
-    tst = db.insert_translation("en", "ro", "hello", "salut")
+    #tst = db.insert_translation("en", "ro", "hello", "salut")
 
 
 @app.route("/", methods=["GET"])
